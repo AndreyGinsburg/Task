@@ -1,0 +1,28 @@
+﻿@model IEnumerable<TestTAsk.Models.App>
+<table border="1" align="center">
+    <tr>
+        <th>Номер телефона</th>
+        <th>Статус</th>
+        <th></th>       
+        @foreach (var _app in Model)
+        {
+            <tr>
+                <td>
+                    @_app.name
+                </td>
+                <td>
+                    @_app.status
+                </td>
+                <td>
+                    @if (_app.status == "В очереди")
+                    {
+                        <a href="/Doc/ChangeStatus?id=@_app.id">Изменить статус</a>
+                    }
+                    else
+                    {
+                        <a href="/Doc/Delete?id=@_app.id">Удалить</a>
+                    }
+                </td>               
+            </tr>
+        }
+    </table>
